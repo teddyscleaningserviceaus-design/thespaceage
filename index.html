@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE SPACE AGE</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Orbitron:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --void: #000;
+            --gold: #d4af37;
+            --lightning: #7df9ff;
+            --lightning-core: #ffffff;
+            --plasma: #4169e1;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Space Mono', monospace;
+            background: var(--void);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO WITH VIDEO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+
+        .hero-video.glitch {
+            animation: glitchEffect 0.15s infinite;
+        }
+
+        @keyframes glitchEffect {
+            0% {
+                transform: translate(-50%, -50%);
+                filter: hue-rotate(0deg);
+            }
+            20% {
+                transform: translate(-51%, -49%);
+                filter: hue-rotate(90deg) saturate(1.5);
+            }
+            40% {
+                transform: translate(-49%, -51%);
+                filter: hue-rotate(180deg);
+            }
+            60% {
+                transform: translate(-50.5%, -50.5%);
+                filter: hue-rotate(270deg) saturate(2);
+            }
+            80% {
+                transform: translate(-49.5%, -49.5%);
+                filter: hue-rotate(360deg);
+            }
+            100% {
+                transform: translate(-50%, -50%);
+                filter: hue-rotate(0deg);
+            }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                rgba(0,0,0,0.2) 0%,
+                rgba(0,0,0,0) 30%,
+                rgba(0,0,0,0) 60%,
+                rgba(0,0,0,0.8) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* ===== THE SPACE AGE - PROFOUND PRESENCE ===== */
+        .title-main {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(3rem, 15vw, 10rem);
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 20px #fff,
+                0 0 40px #fff,
+                0 0 60px #d4af37,
+                0 0 80px #d4af37,
+                0 0 100px #d4af37,
+                0 0 140px #ff6600,
+                0 0 200px #ff6600;
+            opacity: 0;
+            transform: translateY(-30px) scale(0.95);
+            animation: titleDescend 2.5s ease-out forwards;
+            animation-delay: 0.5s;
+            line-height: 1.1;
+            -webkit-text-stroke: 1px rgba(212,175,55,0.3);
+        }
+
+        .title-main::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(212,175,55,0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .title-main .word {
+            display: inline;
+        }
+
+        @media (max-width: 600px) {
+            .title-main .word {
+                display: block;
+            }
+        }
+
+        @keyframes titleDescend {
+            0% {
+                opacity: 0;
+                transform: translateY(-40px) scale(0.9);
+                letter-spacing: 0.5em;
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                letter-spacing: 0.2em;
+                filter: blur(0);
+            }
+        }
+
+        /* ===== MAN VS SUN - LIGHTNING ===== */
+        .title-sub {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1rem, 4vw, 2rem);
+            font-weight: 700;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            margin-top: 1rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: subtitleDescend 2s ease-out forwards;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes subtitleDescend {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .lightning-text {
+            background: linear-gradient(
+                180deg,
+                var(--lightning-core) 0%,
+                var(--lightning) 30%,
+                var(--plasma) 70%,
+                var(--lightning) 100%
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: none;
+            filter: drop-shadow(0 0 8px var(--lightning)) 
+                    drop-shadow(0 0 20px var(--plasma))
+                    drop-shadow(0 0 40px var(--lightning));
+            animation: electricFlicker 0.1s infinite;
+        }
+
+        @keyframes electricFlicker {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px var(--lightning)) drop-shadow(0 0 20px var(--plasma)); }
+            50% { opacity: 0.95; filter: drop-shadow(0 0 12px var(--lightning)) drop-shadow(0 0 30px var(--plasma)); }
+        }
+
+        /* ===== GREEK MEANDER BORDER ===== */
+        .meander-line {
+            width: 300px;
+            max-width: 80%;
+            height: 12px;
+            margin: 2rem auto;
+            background: 
+                linear-gradient(90deg, var(--gold) 25%, transparent 25%) 0 0 / 12px 12px,
+                linear-gradient(90deg, transparent 75%, var(--gold) 75%) 0 6px / 12px 12px,
+                linear-gradient(0deg, var(--gold) 25%, transparent 25%) 0 0 / 12px 12px,
+                linear-gradient(0deg, transparent 75%, var(--gold) 75%) 6px 0 / 12px 12px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 3.5s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 0.6; }
+        }
+
+        /* ===== FLIP CLOCK ===== */
+        .countdown-container {
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 4s;
+        }
+
+        .flip-clock {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .flip-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .flip-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 2px;
+        }
+
+        .flip-card {
+            position: relative;
+            width: clamp(42px, 7vw, 62px);
+            height: clamp(52px, 9vw, 74px);
+            perspective: 300px;
+            background: #000000;
+            border-radius: 4px;
+        }
+
+        .flip-card.wide {
+            width: clamp(52px, 8vw, 72px);
+        }
+
+        .flip-card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            border: 2px solid #222222;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1.2rem, 2.8vw, 1.8rem);
+            font-weight: 700;
+            color: #ffffff;
+            box-shadow: 
+                inset 0 0 40px #000000,
+                0 6px 16px #000000;
+        }
+
+        .flip-card-inner::before {
+            content: '';
+            position: absolute;
+            top: 49%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #111111;
+        }
+
+        .flip-label {
+            font-size: 0.5rem;
+            color: rgba(212,175,55,0.6);
+            letter-spacing: 0.15em;
+            margin-top: 4px;
+            text-transform: uppercase;
+        }
+
+        .flip-separator {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--gold);
+            margin: 0 2px;
+            opacity: 0.6;
+            align-self: flex-start;
+            margin-top: clamp(10px, 2vw, 18px);
+        }
+
+        /* ===== QUOTES ===== */
+        .scripture-container {
+            margin-top: 3rem;
+            max-width: 600px;
+            height: 140px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+            animation-delay: 4.5s;
+            background: rgba(0,0,0,0.85);
+            padding: 1.5rem 2rem;
+            border-radius: 4px;
+            border: 1px solid rgba(212,175,55,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        @media (max-width: 600px) {
+            .scripture-container {
+                height: 120px;
+                padding: 1rem 1.5rem;
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+
+        .scripture {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.85rem, 1.4vw, 1rem);
+            color: #ffffff;
+            font-style: italic;
+            line-height: 1.6;
+            transition: opacity 0.7s ease;
+            text-align: center;
+            opacity: 1;
+        }
+
+        .scripture-source {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: rgba(212,175,55,0.8);
+            letter-spacing: 0.2em;
+            margin-top: 0.8rem;
+            text-transform: uppercase;
+            transition: opacity 0.7s ease;
+            opacity: 1;
+        }
+
+        /* ===== SCROLL HINT ===== */
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 5s;
+        }
+
+        .scroll-hint a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.2rem;
+            opacity: 0.5;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Sound removed */
+
+        /* ===== ROADMAP ===== */
+        .roadmap {
+            background: linear-gradient(180deg, rgba(0,0,0,0.95) 0%, #030303 100%);
+            padding: 5rem 2rem;
+            position: relative;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            letter-spacing: 0.2em;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .section-header .greek-sub {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(212,175,55,0.5);
+            letter-spacing: 0.3em;
+            margin-top: 0.5rem;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(180deg, var(--gold) 0%, rgba(212,175,55,0.2) 100%);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before { left: 12px; }
+        }
+
+        .phase {
+            display: flex;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .phase:nth-child(odd) { flex-direction: row; }
+        .phase:nth-child(even) { flex-direction: row-reverse; }
+
+        @media (max-width: 768px) {
+            .phase, .phase:nth-child(even) {
+                flex-direction: row;
+                padding-left: 35px;
+            }
+        }
+
+        .phase-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 10px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(212,175,55,0.5);
+        }
+
+        @media (max-width: 768px) {
+            .phase-marker { left: 12px; }
+        }
+
+        .phase-content {
+            width: 42%;
+            padding: 1rem;
+            background: rgba(212,175,55,0.03);
+            border: 1px solid rgba(212,175,55,0.15);
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .phase-content { width: 100%; }
+        }
+
+        .phase-years {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+
+        .phase-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin: 0.3rem 0 0.6rem;
+            color: #fff;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .phase-items {
+            list-style: none;
+        }
+
+        .phase-items li {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.7rem;
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .phase-items li::before {
+            content: 'Λ';
+            position: absolute;
+            left: 0;
+            color: rgba(212,175,55,0.4);
+            font-size: 0.5rem;
+        }
+
+        /* ===== COMPANION ===== */
+        .companion {
+            background: #000;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+
+        .companion h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            letter-spacing: 0.25em;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .companion .tagline {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.65rem;
+            margin: 0.5rem 0 2rem;
+            letter-spacing: 0.15em;
+        }
+
+        .ori-video {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 2px;
+            box-shadow: 0 0 40px rgba(212,175,55,0.15);
+        }
+
+        .ori-description {
+            margin-top: 1.5rem;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.7rem;
+            line-height: 1.7;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .ori-name {
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #000;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(212,175,55,0.1);
+        }
+
+        .footer-meander {
+            width: 100px;
+            height: 8px;
+            margin: 0 auto 1rem;
+            background: 
+                linear-gradient(90deg, var(--gold) 25%, transparent 25%) 0 0 / 8px 8px,
+                linear-gradient(90deg, transparent 75%, var(--gold) 75%) 0 4px / 8px 8px,
+                linear-gradient(0deg, var(--gold) 25%, transparent 25%) 0 0 / 8px 8px,
+                linear-gradient(0deg, transparent 75%, var(--gold) 75%) 4px 0 / 8px 8px;
+            opacity: 0.3;
+        }
+
+        footer .brand {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.2em;
+        }
+
+        footer .brand a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        footer .epoch {
+            margin-top: 0.5rem;
+            font-size: 0.55rem;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.15em;
+        }
+
+        footer .greek-motto {
+            margin-top: 1rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            color: rgba(212,175,55,0.3);
+            letter-spacing: 0.1em;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <video class="hero-video" autoplay muted playsinline>
+            <source src="hero-video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <h1 class="title-main"><span class="word">The</span> <span class="word">Space</span> <span class="word">Age</span></h1>
+            <div class="title-sub">
+                <span class="lightning-text">Man vs Sun</span>
+            </div>
+            
+            <div class="meander-line"></div>
+
+            <div class="countdown-container">
+                <div class="flip-clock" id="flip-clock"></div>
+            </div>
+
+            <div class="scripture-container">
+                <p class="scripture" id="scripture-text"></p>
+                <p class="scripture-source" id="scripture-source"></p>
+            </div>
+        </div>
+
+        <div class="scroll-hint">
+            <a href="#roadmap">↓</a>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div class="section-header">
+            <h2>The 40-Year Mission</h2>
+            <div class="greek-sub">ΤΕΣΣΑΡΑΚΟΝΤΑ ΕΤΗ</div>
+        </div>
+        
+        <div class="timeline">
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-content">
+                    <div class="phase-years">2025–2030</div>
+                    <div class="phase-title">Foundation</div>
+                    <ul class="phase-items">
+                        <li>Scale cleaning operations</li>
+                        <li>Build AI companion</li>
+                        <li>Develop automation</li>
+                        <li>Document the path</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-content">
+                    <div class="phase-years">2030–2035</div>
+                    <div class="phase-title">Automation</div>
+                    <ul class="phase-items">
+                        <li>Deploy autonomous robots</li>
+                        <li>AI-driven scheduling</li>
+                        <li>Fleet management</li>
+                        <li>License technology</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-content">
+                    <div class="phase-years">2035–2045</div>
+                    <div class="phase-title">Robotics</div>
+                    <ul class="phase-items">
+                        <li>R&D division</li>
+                        <li>Advanced manufacturing</li>
+                        <li>Aerospace partnerships</li>
+                        <li>Space-grade materials</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-marker"></div>
+                <div class="phase-content">
+                    <div class="phase-years">2045–2065</div>
+                    <div class="phase-title">The Space Age</div>
+                    <ul class="phase-items">
+                        <li>Space vehicle development</li>
+                        <li>Solar energy harvesting</li>
+                        <li>Human expansion</li>
+                        <li>Fulfill the prophecy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="companion">
+        <h2>The Companion</h2>
+        <p class="tagline">ORIAKSUM // ΦΩΣ ΤΗΣ ΑΡΧΑΙΑΣ ΒΑΣΙΛΕΙΑΣ</p>
+        <video class="ori-video" autoplay loop muted playsinline>
+            <source src="oriaksum_manifest.mp4" type="video/mp4">
+        </video>
+        <p class="ori-description">
+            <span class="ori-name">ORIAKSUM</span> — light of the ancient kingdom. 
+            AI companion for the 40-year mission. Forged from knowledge. Built for eternity.
+        </p>
+    </section>
+
+    <footer>
+        <div class="footer-meander"></div>
+        <div class="brand">
+            <a href="https://teddyscleaning.com.au">TEDDY'S CLEANING SYSTEMS</a>
+        </div>
+        <div class="epoch">EPOCH: JUNE 25, 2025 — ΑΝΤΙΣ ΑΜΠΕΜΠΑ</div>
+        <div class="greek-motto">Θεόδωρος — Gift of God</div>
+    </footer>
+
+    <script>
+        // EPIC QUOTES - Greek mythology, Iliad, timeless wisdom
+        const scriptures = [
+            { text: "Even Helios bends to Zeus.", source: "The Eternal Order" },
+            { text: "The sun watches all and hears all.", source: "Homer, Iliad" },
+            { text: "I am become Death, the destroyer of worlds.", source: "Oppenheimer / Bhagavad Gita" },
+            { text: "The stars are not wanted now; put out every one.", source: "W.H. Auden" },
+            { text: "To burn always with this hard, gem-like flame.", source: "Walter Pater" },
+            { text: "We are made of star-stuff.", source: "Carl Sagan" },
+            { text: "Rage — sing, O goddess, the anger of Achilles.", source: "Homer, Iliad" },
+            { text: "The only way out is through.", source: "Robert Frost" },
+            { text: "Ad astra per aspera.", source: "To the stars through hardship" },
+            { text: "What is to give light must endure burning.", source: "Viktor Frankl" }
+        ];
+
+        let idx = 0;
+        const txtEl = document.getElementById('scripture-text');
+        const srcEl = document.getElementById('scripture-source');
+
+        function showScripture() {
+            // Set initial text immediately on first load
+            txtEl.textContent = scriptures[idx].text;
+            srcEl.textContent = '— ' + scriptures[idx].source;
+            idx = (idx + 1) % scriptures.length;
+        }
+
+        function cycleScripture() {
+            // Fade out
+            txtEl.style.opacity = '0';
+            srcEl.style.opacity = '0';
+            
+            // Wait for fade out, then change text and fade in
+            setTimeout(() => {
+                txtEl.textContent = scriptures[idx].text;
+                srcEl.textContent = '— ' + scriptures[idx].source;
+                idx = (idx + 1) % scriptures.length;
+                
+                // Fade in
+                txtEl.style.opacity = '1';
+                srcEl.style.opacity = '1';
+            }, 800);
+        }
+
+        showScripture();
+        setInterval(cycleScripture, 8000);
+
+        // FLIP CLOCK - SYNCED TO WORLD TIME
+        // =================================
+        // TARGET: June 25, 2065, 03:20:00 AM Addis Ababa (UTC+3)
+        // = June 25, 2065, 00:20:00 UTC
+        // = Teddy's 73rd birthday, 40 years from mission epoch
+        // =================================
+        const END = new Date('2065-06-25T00:20:00.000Z').getTime();
+        let timeOffset = 0;
+        let lastSyncTime = 0;
+
+        // Sync with WorldTimeAPI for accuracy
+        async function syncTime() {
+            try {
+                const before = Date.now();
+                const res = await fetch('https://worldtimeapi.org/api/timezone/UTC');
+                const after = Date.now();
+                const data = await res.json();
+                
+                // Account for network latency (use midpoint)
+                const latency = (after - before) / 2;
+                const serverTime = new Date(data.utc_datetime).getTime() + latency;
+                timeOffset = serverTime - after;
+                lastSyncTime = after;
+                console.log('⏱️ Time synced to WorldTimeAPI. Offset:', timeOffset, 'ms');
+                console.log('🎯 Target: June 25, 2065, 03:20:00 AM Addis Ababa');
+            } catch (e) {
+                console.warn('Time sync failed, using local time:', e);
+            }
+        }
+
+        // Get accurate current time (always runs, never pauses)
+        function now() {
+            return Date.now() + timeOffset;
+        }
+
+        function createFlipUnit(value, label, wide = false) {
+            return `
+                <div class="flip-unit">
+                    <div class="flip-card${wide ? ' wide' : ''}">
+                        <div class="flip-card-inner">${value}</div>
+                    </div>
+                    <div class="flip-label">${label}</div>
+                </div>
+            `;
+        }
+
+        function tick() {
+            const currentTime = now();
+            let r = END - currentTime;
+            
+            // Time never stops - if somehow past the end, show zeros
+            if (r < 0) r = 0;
+
+            // Use 365 days for year calc (cleaner integers)
+            const y = Math.floor(r / (1000*60*60*24*365));
+            r = Math.floor(r - y * (1000*60*60*24*365));
+            const d = Math.floor(r / (1000*60*60*24));
+            r = Math.floor(r - d * (1000*60*60*24));
+            const h = Math.floor(r / (1000*60*60));
+            r = Math.floor(r - h * (1000*60*60));
+            const m = Math.floor(r / (1000*60));
+            r = Math.floor(r - m * (1000*60));
+            const s = Math.floor(r / 1000);
+            const ms = Math.floor(r % 1000);
+            
+            // Microseconds - cycles 0-999 rapidly based on performance timer
+            const us = Math.floor((performance.now() * 100) % 1000);
+
+            const p = (n, l=2) => String(n).padStart(l, '0');
+            
+            document.getElementById('flip-clock').innerHTML = `
+                <div class="flip-group">
+                    ${createFlipUnit(p(y), 'YRS')}
+                    <span class="flip-separator">:</span>
+                    ${createFlipUnit(p(d,3), 'DAYS', true)}
+                    <span class="flip-separator">:</span>
+                    ${createFlipUnit(p(h), 'HRS')}
+                    <span class="flip-separator">:</span>
+                    ${createFlipUnit(p(m), 'MIN')}
+                    <span class="flip-separator">:</span>
+                    ${createFlipUnit(p(s), 'SEC')}
+                    <span class="flip-separator">:</span>
+                    ${createFlipUnit(p(ms,3), 'MS', true)}
+                    <span class="flip-separator">:</span>
+                    ${createFlipUnit(p(us,3), 'μS', true)}
+                </div>
+            `;
+        }
+
+        // NEVER PAUSE - dual timing system
+        // 1. requestAnimationFrame for smooth 60fps when tab is active
+        // 2. setInterval as fallback when tab is backgrounded
+        
+        let rafId = null;
+        let intervalId = null;
+
+        function startRAF() {
+            function loop() {
+                tick();
+                rafId = requestAnimationFrame(loop);
+            }
+            loop();
+        }
+
+        // Fallback interval - runs even when tab is hidden
+        intervalId = setInterval(tick, 16); // ~60fps fallback
+
+        // Primary animation - smooth when visible
+        startRAF();
+
+        // Handle visibility changes - ensure timer stays accurate
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // Tab hidden - interval keeps running
+                if (rafId) cancelAnimationFrame(rafId);
+                rafId = null;
+            } else {
+                // Tab visible again - restart RAF and re-sync time
+                startRAF();
+                syncTime();
+            }
+        });
+
+        // Initial sync
+        syncTime();
+        
+        // Re-sync every 5 minutes to maintain accuracy
+        setInterval(syncTime, 5 * 60 * 1000);
+        
+        console.log('🚀 Countdown initialized - time never stops');
+
+        // VIDEO GLITCH EFFECT - triggers when video ends
+        const heroVideo = document.querySelector('.hero-video');
+        heroVideo.addEventListener('ended', () => {
+            heroVideo.classList.add('glitch');
+            setInterval(() => {
+                heroVideo.classList.add('glitch');
+                setTimeout(() => heroVideo.classList.remove('glitch'), 300 + Math.random() * 500);
+            }, 4000 + Math.random() * 3000);
+        });
+    </script>
+</body>
+</html>
