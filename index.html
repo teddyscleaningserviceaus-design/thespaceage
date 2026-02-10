@@ -632,6 +632,433 @@
             letter-spacing: 0.1em;
             font-style: italic;
         }
+
+        /* ===== JT FOXX PITCH - THE SILVER STANDARD ===== */
+        #jt-pitch {
+            background: linear-gradient(180deg, #000000 0%, #050505 100%);
+            padding: 5rem 2rem;
+            position: relative;
+            border-top: 2px solid rgba(192,192,192,0.2);
+            border-bottom: 2px solid rgba(192,192,192,0.2);
+            overflow: hidden;
+        }
+
+        #jt-pitch::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212,175,55,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(192,192,192,0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .silver-standard-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .silver-standard-header h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            letter-spacing: 0.3em;
+            color: #fff;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 20px rgba(192,192,192,0.3),
+                0 0 40px rgba(212,175,55,0.2);
+            margin-bottom: 0.5rem;
+        }
+
+        .silver-standard-header .tagline {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            color: rgba(192,192,192,0.6);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        /* ===== MORGAN SILVER DOLLAR COIN ===== */
+        .coin-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 3rem auto;
+            perspective: 1200px;
+        }
+
+        .morgan-coin {
+            width: clamp(200px, 40vw, 300px);
+            height: clamp(200px, 40vw, 300px);
+            position: relative;
+            transform-style: preserve-3d;
+            animation: coinRotate 8s linear infinite;
+        }
+
+        @keyframes coinRotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .coin-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 25%, #a8a8a8 50%, #d0d0d0 75%, #c0c0c0 100%);
+            border: 3px solid #999;
+            box-shadow: 
+                inset 0 0 40px rgba(0,0,0,0.3),
+                inset 0 10px 30px rgba(255,255,255,0.2),
+                0 10px 40px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            backface-visibility: hidden;
+            padding: 2rem;
+        }
+
+        .coin-obverse {
+            transform: rotateY(0deg) translateZ(2px);
+        }
+
+        .coin-reverse {
+            transform: rotateY(180deg) translateZ(2px);
+        }
+
+        .coin-face .liberty {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.5rem, 1.5vw, 0.7rem);
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+        }
+
+        .coin-face .motto {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.35rem, 1vw, 0.5rem);
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin: 0.3rem 0;
+            font-style: italic;
+        }
+
+        .coin-face .year {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.8rem, 2vw, 1.2rem);
+            color: #222;
+            font-weight: 900;
+            margin-top: 0.5rem;
+        }
+
+        .coin-face .stars {
+            font-size: clamp(0.3rem, 0.8vw, 0.4rem);
+            color: #333;
+            letter-spacing: 0.2em;
+            margin: 0.5rem 0;
+        }
+
+        .coin-face .eagle {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            margin: 0.5rem 0;
+        }
+
+        /* ===== THE PARALLELS - TWO COLUMNS ===== */
+        .parallels-container {
+            max-width: 1000px;
+            margin: 4rem auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .parallels-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .parallels-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        .parallel-column {
+            background: rgba(0,0,0,0.6);
+            padding: 2rem;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .parallel-column.dollar {
+            border: 1px solid rgba(192,192,192,0.3);
+        }
+
+        .parallel-column.empire {
+            border: 1px solid rgba(212,175,55,0.3);
+        }
+
+        .parallel-column h3 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .parallel-column.dollar h3 {
+            color: #c0c0c0;
+        }
+
+        .parallel-column.empire h3 {
+            color: var(--gold);
+        }
+
+        .parallel-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(192,192,192,0.2);
+        }
+
+        .parallel-column.empire .parallel-item {
+            border-left-color: rgba(212,175,55,0.3);
+        }
+
+        .parallel-item .label {
+            font-family: 'Orbitron', monospace;
+            font-size: 0.6rem;
+            color: rgba(192,192,192,0.5);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .parallel-column.empire .parallel-item .label {
+            color: rgba(212,175,55,0.5);
+        }
+
+        .parallel-item .value {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        /* ===== WAR ROOM ===== */
+        .war-room {
+            max-width: 900px;
+            margin: 5rem auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .war-room h3 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: #fff;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px rgba(212,175,55,0.3);
+        }
+
+        .war-quote {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin: 1.5rem 0;
+        }
+
+        .war-quote.emphasis {
+            font-size: clamp(1rem, 1.8vw, 1.3rem);
+            color: var(--gold);
+            font-style: normal;
+            font-weight: 700;
+            margin: 2rem 0;
+        }
+
+        /* ===== PROGRESSION ===== */
+        .progression {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .progression-step {
+            background: rgba(212,175,55,0.05);
+            border: 1px solid rgba(212,175,55,0.2);
+            padding: 1rem 1.5rem;
+            border-radius: 2px;
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        .progression-step .value {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.5rem, 0.9vw, 0.6rem);
+            color: var(--gold);
+            margin-top: 0.3rem;
+        }
+
+        .progression-arrow {
+            color: rgba(212,175,55,0.4);
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .progression {
+                flex-direction: column;
+            }
+            .progression-arrow {
+                transform: rotate(90deg);
+            }
+        }
+
+        /* ===== TRILLION DOLLAR QUESTION ===== */
+        .trillion-question {
+            max-width: 800px;
+            margin: 5rem auto;
+            background: rgba(212,175,55,0.03);
+            border: 2px solid rgba(212,175,55,0.3);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trillion-question h3 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.3rem, 2.5vw, 2rem);
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 30px rgba(212,175,55,0.5);
+        }
+
+        .trillion-quote {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.85rem, 1.4vw, 1rem);
+            font-style: italic;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.9;
+            margin: 1.2rem 0;
+        }
+
+        .investor-name {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-top: 2rem;
+            text-shadow: 
+                0 0 20px rgba(212,175,55,0.5),
+                0 0 40px rgba(212,175,55,0.3),
+                0 0 60px rgba(212,175,55,0.2);
+            animation: goldPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes goldPulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px rgba(212,175,55,0.5),
+                    0 0 40px rgba(212,175,55,0.3);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px rgba(212,175,55,0.7),
+                    0 0 60px rgba(212,175,55,0.5),
+                    0 0 80px rgba(212,175,55,0.3);
+            }
+        }
+
+        /* ===== THE OFFER ===== */
+        .the-offer {
+            max-width: 600px;
+            margin: 5rem auto 0;
+            text-align: center;
+            background: rgba(0,0,0,0.8);
+            border: 1px solid rgba(192,192,192,0.3);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .the-offer h3 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: #c0c0c0;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .offer-tagline {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+            color: rgba(255,255,255,0.6);
+            line-height: 1.8;
+            margin: 1rem 0;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(192,192,192,0.2);
+        }
+
+        .contact-item {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
+            margin: 0.5rem 0;
+        }
+
+        .contact-item a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+        }
+
+        .spartan-quote {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            color: rgba(212,175,55,0.4);
+            font-style: italic;
+            margin-top: 2rem;
+            letter-spacing: 0.1em;
+        }
     </style>
 </head>
 <body>
@@ -728,6 +1155,198 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- ===== JT FOXX PITCH - THE SILVER STANDARD ===== -->
+    <section id="jt-pitch" style="display:none">
+        
+        <div class="silver-standard-header">
+            <h2>The Silver Standard</h2>
+            <p class="tagline">E PLURIBUS UNUM — Out of Many, One</p>
+        </div>
+
+        <!-- THE COIN -->
+        <div class="coin-container">
+            <div class="morgan-coin">
+                <div class="coin-face coin-obverse">
+                    <div class="stars">★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★ ★</div>
+                    <div class="liberty">Liberty</div>
+                    <div class="motto">E Pluribus Unum</div>
+                    <div class="year">1885</div>
+                </div>
+                <div class="coin-face coin-reverse">
+                    <div class="motto">In God We Trust</div>
+                    <div class="eagle">🦅</div>
+                    <div class="motto">United States of America</div>
+                    <div class="year">One Dollar</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THE PARALLELS -->
+        <div class="parallels-container">
+            <div class="parallels-grid">
+                <div class="parallel-column dollar">
+                    <h3>The Dollar</h3>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Foundation</div>
+                        <div class="value">Minted in silver — real value, not paper</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Unity</div>
+                        <div class="value">E PLURIBUS UNUM — out of many, one</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Conviction</div>
+                        <div class="value">In God We Trust — faith drives purpose</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Vision</div>
+                        <div class="value">The Eagle — sees from above</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Legacy</div>
+                        <div class="value">141 years and counting</div>
+                    </div>
+                </div>
+
+                <div class="parallel-column empire">
+                    <h3>The Empire</h3>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Foundation</div>
+                        <div class="value">Built on real work, not theory</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Unity</div>
+                        <div class="value">One system, infinite verticals</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Conviction</div>
+                        <div class="value">Faith drives the mission</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Vision</div>
+                        <div class="value">AI sees what humans miss</div>
+                    </div>
+                    
+                    <div class="parallel-item">
+                        <div class="label">Legacy</div>
+                        <div class="value">A 40-year mission, already in motion</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THE WAR ROOM -->
+        <div class="war-room">
+            <h3>Business Is War</h3>
+            
+            <p class="war-quote">
+                "The greatest victory is that which requires no battle."
+            </p>
+            <p class="war-quote" style="font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-top: -0.5rem;">— Sun Tzu</p>
+            
+            <p class="war-quote" style="margin-top: 2rem;">
+                Business is War. But empires aren't built in a day.
+            </p>
+            
+            <p class="war-quote emphasis">
+                They're minted. Layer by layer. Year by year.
+            </p>
+            
+            <p class="war-quote">
+                Teddy's Cleaning Systems isn't a cleaning company.
+            </p>
+            
+            <p class="war-quote emphasis">
+                It's the mint.
+            </p>
+        </div>
+
+        <!-- THE PROGRESSION -->
+        <div class="progression">
+            <div class="progression-step">
+                <div>Cleaning</div>
+                <div class="value">$500K ARR</div>
+            </div>
+            <div class="progression-arrow">→</div>
+            <div class="progression-step">
+                <div>Distribution</div>
+                <div class="value">$50M</div>
+            </div>
+            <div class="progression-arrow">→</div>
+            <div class="progression-step">
+                <div>Robotics</div>
+                <div class="value">$5B</div>
+            </div>
+            <div class="progression-arrow">→</div>
+            <div class="progression-step">
+                <div>Automation</div>
+                <div class="value">$500B</div>
+            </div>
+            <div class="progression-arrow">→</div>
+            <div class="progression-step">
+                <div>Space</div>
+                <div class="value">$50T</div>
+            </div>
+        </div>
+
+        <!-- THE TRILLION DOLLAR QUESTION -->
+        <div class="trillion-question">
+            <h3>The Question</h3>
+            
+            <p class="trillion-quote">
+                Every trillionaire in history built infrastructure.
+            </p>
+            
+            <p class="trillion-quote">
+                Rockefeller minted oil. Carnegie minted steel. Bezos minted logistics.
+            </p>
+            
+            <p class="trillion-quote">
+                The next mint? The one that automates the physical world.
+            </p>
+            
+            <p class="trillion-quote">
+                That mint needs an investor who sees war before the first shot.
+            </p>
+            
+            <p class="trillion-quote" style="color: var(--gold); font-style: normal; font-weight: 700; font-size: clamp(1rem, 1.8vw, 1.2rem); margin-top: 2rem;">
+                That investor becomes the first PUBLIC trillionaire.
+            </p>
+            
+            <div class="investor-name">JT FOXX</div>
+        </div>
+
+        <!-- THE OFFER -->
+        <div class="the-offer">
+            <h3>Strategic Partnership Inquiry</h3>
+            
+            <p class="offer-tagline">
+                One conversation. One decision. One legacy.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">Tewedros Kebede</div>
+                <div class="contact-item">Founder, Teddy's Cleaning Systems</div>
+                <div class="contact-item"><a href="mailto:tewedros@teddyscleaning.com.au">tewedros@teddyscleaning.com.au</a></div>
+                <div class="contact-item"><a href="tel:+61450548856">+61 450 548 856</a></div>
+            </div>
+            
+            <p class="spartan-quote">
+                "An empire is not built on comfort."
+            </p>
+        </div>
+        
     </section>
 
     <section class="companion">
